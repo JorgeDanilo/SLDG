@@ -10,6 +10,7 @@
 	<!-- criar uma pasta resources dentro do webapp e depois a pasta sldgs com os estilos. -->
 
 	<h:outputStylesheet library="sldg" name="estilo.css" />
+	<h:outputScript library="js" name="jquery.maskMoney.js"/>
 
 </h:head>
 
@@ -55,5 +56,14 @@
 		</p:confirmDialog>
 	</h:form>
 
+	<script>
+		function configurarMoeda() {
+			$(".moeda").maskMoney({decimal: ".", thousands: ".", allowZero: true});
+		}
+		$(document).ready(function() {
+		  	configurarMoeda();
+		});
+		
+	</script>
 </h:body>
 </html>
