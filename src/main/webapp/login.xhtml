@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/Layout.xhtml"
+ 	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:define name="corpo">
+	
+	<h1 style="margin-left: 500px;">Login e Bem Vindo!</h1>
+	
+	<h:panelGrid columns="2" style="margin-left: 500px; margin-top: 20px;">
+		<p:outputLabel value="Email:" for="emailUsuario"/>
+		<p:inputText id="emailUsuario"/>
+		
+		<p:outputLabel value="Senha:" for="senhaUsuario"/>
+		<p:password id="senhaUsuario"/>
+		
+		<p:commandButton value="Entrar" style="background-color: green; margin-top: 20px;"/>
+		<p:commandLink value="Esqueçeu senha ?" style="margin-top: 20px;"/>
+		
+	</h:panelGrid>
+
+</ui:define> <!-- Fim do define -->
+</ui:composition> <!-- Fim do composition -->
