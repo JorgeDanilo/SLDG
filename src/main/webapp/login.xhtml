@@ -8,20 +8,20 @@
 
 
 <ui:define name="corpo">
-	
+	<h:form>
 	<h1 style="margin-left: 500px;">Login e Bem Vindo!</h1>
 	
 	<h:panelGrid columns="2" style="margin-left: 500px; margin-top: 20px;">
 		<p:outputLabel value="Email:" for="emailUsuario"/>
-		<p:inputText id="emailUsuario"/>
+		<p:inputText id="emailUsuario" value="#{loginController.usuario.email}"/>
 		
 		<p:outputLabel value="Senha:" for="senhaUsuario"/>
-		<p:password id="senhaUsuario"/>
+		<p:password id="senhaUsuario" value="#{loginController.usuario.senha}"/>
 		
-		<p:commandButton value="Entrar" style="background-color: green; margin-top: 20px;"/>
+		<p:commandButton value="Entrar" style="background-color: green; margin-top: 20px;" action="#{loginController.autenticar}"/>
 		<p:commandLink value="Esqueçeu senha ?" style="margin-top: 20px;"/>
 		
 	</h:panelGrid>
-
+</h:form>
 </ui:define> <!-- Fim do define -->
 </ui:composition> <!-- Fim do composition -->

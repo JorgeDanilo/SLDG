@@ -1,8 +1,10 @@
 package com.sldg.erp.service;
 
 import java.io.Serializable;
+import java.util.Optional;
 
 import javax.inject.Inject;
+import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 
 import com.sldg.erp.model.Usuario;
 import com.sldg.erp.repository.Usuarios;
@@ -21,6 +23,14 @@ public class UsuarioService implements Serializable {
 	@Transacional
 	public void salvar(Usuario usuario) {
 		usuarios.guardar(usuario);
+	}
+	
+	public void autenticar(Usuario usuario) {
+		if ("".equals(usuario.getSenha()) || "".equals(usuario.getEmail())) {
+			throw new RuntimeException("Usuário ou senhas não informado");
+		} else {
+			usuarios.autentica(usuario);
+		}
 	}
 	
 }
