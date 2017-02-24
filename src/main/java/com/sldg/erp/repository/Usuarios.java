@@ -60,6 +60,15 @@ public class Usuarios implements Serializable {
 		criteria.add(Restrictions.eq("senha", usuario.getSenha()));
 		return (Usuario) criteria.uniqueResult();
 	}
+	
+	public Usuario autenticar(String user, String senha) {
+		Session session = (Session) manager.getDelegate();
+		Criteria criteria = session.createCriteria(Usuario.class);
+		criteria.add(Restrictions.eq("email", user));
+		criteria.add(Restrictions.eq("senha", senha));
+		return (Usuario) criteria.uniqueResult();
+		
+	}
 
 	public Usuario guardar(Usuario usuario) {
 		return manager.merge(usuario);

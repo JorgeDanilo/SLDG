@@ -37,12 +37,15 @@ public class ProdutoController implements Serializable {
 	
 	private Boolean marcarProduto;
 	
+	/**
+	 * TODO: implementar;
+	 */
 	public void marcarProdutosCompra() {
 		System.out.println("Aceitou Comprar Produto: " + this.marcarProduto);
 		System.out.println("Nome Produto: " + this.produtoEdicao.getNomeProduto());
 	}
 	
-
+	
 	public void salvar() {
 		this.produtoService.salvar(produtoEdicao);
 		facesMessages.info("Produto Cadastrado!");
