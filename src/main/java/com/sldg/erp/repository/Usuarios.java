@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import org.hibernate.Criteria;
@@ -30,6 +32,10 @@ public class Usuarios implements Serializable {
 	
 	@Inject
 	private EntityManager manager;
+	
+	EntityManagerFactory factory = Persistence.createEntityManagerFactory("SistemaLanchesDaniloGessica");
+	
+	EntityManager manger2 = factory.createEntityManager();
 	
 	/**
 	 * 
@@ -59,6 +65,16 @@ public class Usuarios implements Serializable {
 		criteria.add(Restrictions.eq("email", usuario.getEmail()));
 		criteria.add(Restrictions.eq("senha", usuario.getSenha()));
 		return (Usuario) criteria.uniqueResult();
+	}
+	
+	public Usuario autenticar(final String user, final String senha) {
+		manger2.getTransaction().begin();
+		Query query = manger2.createQuery("from Usuario u where u.email = :pemail and u.senha = :pcodigo");
+		query.setParameter("pemail", user);
+		query.setParameter("pcodigo", senha);
+		
+		return (Usuario) query.getSingleResult();
+		
 	}
 
 	public Usuario guardar(Usuario usuario) {

@@ -1,10 +1,8 @@
 package com.sldg.erp.service;
 
 import java.io.Serializable;
-import java.util.Optional;
 
 import javax.inject.Inject;
-import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 
 import com.sldg.erp.model.Usuario;
 import com.sldg.erp.repository.Usuarios;
@@ -17,8 +15,8 @@ public class UsuarioService implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@Inject
-	private Usuarios usuarios;
+//	@Inject
+	private Usuarios usuarios = new Usuarios();
 	
 	@Transacional
 	public void salvar(Usuario usuario) {
@@ -31,6 +29,10 @@ public class UsuarioService implements Serializable {
 		} else {
 			usuarios.autentica(usuario);
 		}
+	}
+	
+	public Usuario autenticar(String user, String senha) {
+		return usuarios.autenticar(user, senha);
 	}
 	
 }
